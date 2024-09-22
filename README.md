@@ -5,12 +5,6 @@
 npm install
 ```
 
-## vuetify install
-
-```sh
-npm install vuetify
-```
-
 ### Compile and Hot-Reload for Development
 
 ```sh
