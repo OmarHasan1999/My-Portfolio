@@ -19,8 +19,7 @@
                     <button type="submit">Send message</button>
                     <div
                     v-show="snack"
-                    style="position: absolute;border-style: none;top: 82.3%;left: 30%;
-                    color: aliceblue;background-color: transparent;"
+                    class="theMessage"
                     >
                     {{ theMessage }}
 
@@ -99,10 +98,13 @@ export default {
 
         // Send email
         await emailjs.send(serviceID, templateID, templateParams);
-        setTimeout(() => {
+        this.theMessage = "Successfully sent !";
         this.snack = true
-        this.theMessage = "successfully send it"
-        },3000)
+
+        setTimeout(() => {
+        this.snack = false;
+        },2000)
+
         this.form = {
             firstName : "",
             lastName : "",
@@ -122,8 +124,16 @@ export default {
       duration: "700",
       easing: "ease-in-out",
     }
-  )
+  ),
+  ScrollReveal().reveal(".theMessage", {
+      origin: "top",
+      distance: "0px",
+      duration: "2000",
+      easing: "ease-in-out",
+    }
+)
   },
+
 
 
   inject : ['showMenu', 'scrollDown'],
@@ -132,6 +142,21 @@ export default {
 
 
 <style lang="css">
+    .theMessage {
+  position: fixed; /* Use fixed positioning */
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 5px 40px;
+  top: -50px; /* Start off-screen */
+  left: 23%;
+  color: white;
+  background-color: transparent;
+  transition: top 0.5s ease; /* Smooth transition for the top property */
+}
+
+.theMessage.show {
+  top: 5%; /* Move into view */
+}
     .contact{
         width:100%;
         height: 100vh;
@@ -297,8 +322,10 @@ export default {
 
     /* Firefox */
     input[type=number] {
-      -moz-appearance: textfield;
+        -moz-appearance: textfield;
 }
+
+
 
 
 @media (max-width:1200px){
