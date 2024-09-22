@@ -10,27 +10,27 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/about',
-      name: 'about',
-      component: () => import('../views/AboutView.vue')
+      path: '/Skills',
+      name: 'Skills',
+      component: () => import('../views/SkillsView.vue')
     },
     
     {
-      path: "/navigation",
-      name: "navigation",
+      path: "/Projects",
+      name: "Projects",
       component: () =>
-        import("../views/NavigationView.vue"),
+        import("../views/ProjectsView.vue"),
     },
     
     {
       
-        path: "/icons",
-        name: "icons",
+        path: "/Contact",
+        name: "Contact",
         component: () =>
-          import("../views/IconsView.vue"),
+          import("../views/ContactView.vue"),
       
     }
-  ]
+   ]
 });
 /*
  router.beforeEach((to, from, next) => {
